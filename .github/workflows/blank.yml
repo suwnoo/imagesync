@@ -31,10 +31,12 @@ jobs:
           images=$(cat images.txt)
           count=$(echo "$images" |wc -l)
           icount=1
+          docker login --username=${{ secrets.ALIYUN_USER }}  --password=${{ secrets.ALIYUN_PW }}  registry.cn-hangzhou.aliyuncs.com
           for image in $images
           do
                echo $image
                docker pull $image
+               
           done 
 
 
