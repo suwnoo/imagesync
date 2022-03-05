@@ -31,7 +31,7 @@ jobs:
           images=$(cat images.txt)
           count=$(echo "$images" |wc -l)
           icount=1
-          docker login --username=${{ secrets.ALIYUN_USER }}  --password=${{ secrets.ALIYUN_PW }}  registry.cn-hangzhou.aliyuncs.com
+          docker login --username=${{ secrets.ALIYUN_USER }}  --password=${{ secrets.ALIYUN_PW }}  registry.cn-hangzhou.aliyuncs.com --password-stdin
           for image in $images
           do
                echo $image
