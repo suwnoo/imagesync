@@ -32,6 +32,7 @@ jobs:
           count=$(echo "$images" |wc -l)
           icount=1
           echo ${{ secrets.ALIYUN_PW }}| docker login --username=${{ secrets.ALIYUN_USER }}    registry.cn-hangzhou.aliyuncs.com --password-stdin
+          echo > newimages.txt
           for image in $images
           do
                echo $image
@@ -42,7 +43,20 @@ jobs:
                docker tag $image ${new_image}
                docker push ${new_image}
                echo "==========================="
-               echo "${new_image}"
+               echo ${new_image} > newimages.txt     
           done 
+          
+      - name: 'Send mail'
+        uses: dawidd6/action-send-mail@master
+        with:
+          server_address: smtp.163.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PW}}
+          subject: sync docker images
 
+          body: file://newimages.txt
+          to: suwnoo@163.com
+          from: GitHub Actions
+          content_type: text/html
 
