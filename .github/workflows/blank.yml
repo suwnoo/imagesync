@@ -25,15 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Log into aliyun registry
-      - name: Log into aliyun registry
-        run: echo "${{ secrets.ALIYUN_PW }}" | docker login $ALIYUN_REGISTRY -u ${{ secrets.ALIYUN_USER }} --password-stdin
        # pull and push images
       - name: pull and push images
         run: |
           images=$(cat images.txt)
           count=$(echo "$images" |wc -l)
           icount=1
+          docker login --username=${{ secrets.ALIYUN_USER }} --password=${{ secrets.ALIYUN_PW }} $ALIYUN_REGISTRY
           for image in $images
           do
             echo [$icount/$count]: $image
