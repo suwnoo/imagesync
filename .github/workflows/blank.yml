@@ -31,5 +31,10 @@ jobs:
           images=$(cat images.txt)
           count=$(echo "$images" |wc -l)
           icount=1
+          for image in $images
+          do
+               echo $image
+               docker pull $image
+          done 
 
 
