@@ -31,16 +31,5 @@ jobs:
           images=$(cat images.txt)
           count=$(echo "$images" |wc -l)
           icount=1
-          docker login --username=${{ secrets.ALIYUN_USER }} --password=${{ secrets.ALIYUN_PW }} $ALIYUN_REGISTRY
-          for image in $images
-          do
-            echo [$icount/$count]: $image
-            version=${$image| awk -F: '{print $1}' }
-            name=${$image | awk -F: '{print $1}' | awk -F/ '{ print $NF}'}
-            docker pull $image 
-            docker tag $image registry.cn-hangzhou.aliyuncs.com/swimg/base:$name-$version
-            docker push registry.cn-hangzhou.aliyuncs.com/swimg/base:$name-$version
-            ((icount++))
-          done  
 
 
