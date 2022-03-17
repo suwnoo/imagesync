@@ -43,7 +43,7 @@ jobs:
                docker tag $image ${new_image}
                docker push ${new_image}
                echo "==========================="
-               echo ${new_image} > newimages.txt     
+               echo ${new_image} >> newimages.txt     
           done 
           
       - name: 'Send mail'
