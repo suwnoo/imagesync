@@ -1,3 +1,1 @@
-gcr.io/cadvisor/cadvisor:v0.39.2
-quay.io/prometheus/node-exporter:latest
-quay.io/prometheus/node-exporter:v1.3.1
+k8s.gcr.io/metrics-server/metrics-server:v0.5.2
