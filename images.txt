@@ -1,1 +1,1 @@
-k8s.gcr.io/metrics-server/metrics-server:v0.6.1
+gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller:v0.37.0
