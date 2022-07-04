@@ -1,6 +1,2 @@
-gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook:v0.37.0@sha256:5fe6aa767279b53b304d2203d645a
-3a88ea41825cca28ca678bbf5f952044446
-gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller:v0.37.0@sha256:2a5239e0e458134870db854100
-8f358618a35d24247044a0041ab9ecb9ab2413n
 gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:v0.27.0
 
