@@ -29,15 +29,18 @@ jobs:
       - name: pull and push images
         run: |
           images=$(cat images.txt | grep -v ^#)
-          count=$(echo "$images" |grep -v ^#|wc -l)
+          count=$(echo "$images" |grep -v ^# |wc -l)
           icount=1
           echo ${{ secrets.ALIYUN_PW }}| docker login --username=${{ secrets.ALIYUN_USER }}    registry.cn-hangzhou.aliyuncs.com --password-stdin
           echo > newimages.txt
           for image in $images
           do
                echo $image
-               version=`echo $image| awk -F: '{print $NF}' 
-               name=`echo $image | awk -F: '{print $1}' | awk -F/ '{ print $NF}'`
+               version=`echo $image| awk -F: '{print $NF}'`
+			   if [[ "$version" == "$image" ]];then 
+			       version='1.0'
+			   fi	   
+               name=`echo $image | awk -F: '{print $1}' | awk -F/ '{ print $(NF-1)"-"$NF}'`
                new_image="registry.cn-hangzhou.aliyuncs.com/swimg/base:$name-$version"
                docker pull $image 
                docker tag $image ${new_image}
@@ -59,4 +62,3 @@ jobs:
           to: suwnoo@163.com
           from: GitHub Actions
           content_type: text/html
-
