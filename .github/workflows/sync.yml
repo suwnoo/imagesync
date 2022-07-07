@@ -43,7 +43,7 @@ jobs:
                then
                   version=`echo $image| awk -F: '{print $NF}'`
                else
-                  version='1.0'
+                  version='v0.1'
                fi   
                new_image="registry.cn-hangzhou.aliyuncs.com/swimg/$name:$version"
                docker pull $image 
