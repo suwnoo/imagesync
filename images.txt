@@ -1,4 +1,2 @@
-k8s.gcr.io/sig-storage/livenessprobe:v2.5.0
-k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.4.0
-mcr.microsoft.com/k8s/csi/nfs-csi:v3.1.0
-k8s.gcr.io/sig-storage/csi-provisioner:v2.2.2
+gcr.io/kaniko-project/executor:latest
+gcr.io/kaniko-project/executor:debug
