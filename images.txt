@@ -1,2 +1,3 @@
-gcr.io/kaniko-project/executor:latest
-gcr.io/kaniko-project/executor:debug
+# gcr.io/kaniko-project/executor:latest
+# gcr.io/kaniko-project/executor:debug
+ikubernetes/admin-box:v1.2
